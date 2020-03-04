@@ -40,7 +40,6 @@ export default function Buttons() {
   } else {
     return (
       <div>
-        <h1>Home Page</h1>
         <div>
           <button onClick={goToListings}>{translation.Dutch[0]}</button> <br />
           <button onClick={goToScheduleView}>{translation.Dutch[1]}</button>
