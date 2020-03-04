@@ -1,24 +1,65 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Switch, Route, NavLink } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import Listings from "./components/Listings";
+import ScheduleView from "./components/ScheduleView";
+import About from "./components/About";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      <nav
+        style={{
+          textAlign: "center"
+        }}
+      >
+        <NavLink
+          to="/home"
+          activeStyle={{
+            fontWeight: "bold",
+            color: "red"
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          Home
+        </NavLink>
+        {" | "}
+        <NavLink
+          to="/listings"
+          activeStyle={{
+            fontWeight: "bold",
+            color: "red"
+          }}
+        >
+          Listings
+        </NavLink>
+        {" | "}
+        <NavLink
+          to="/schedule"
+          activeStyle={{
+            fontWeight: "bold",
+            color: "red"
+          }}
+        >
+          Schedule Viewing
+        </NavLink>
+        {" | "}
+        <NavLink
+          to="/about"
+          activeStyle={{
+            fontWeight: "bold",
+            color: "red"
+          }}
+        >
+          About
+        </NavLink>
+      </nav>
+      <Switch>
+        <Route path="/about" component={About} />
+        <Route path="/schedule" component={ScheduleView} />
+        <Route path="/listings" component={Listings} />
+        <Route path="/" component={HomePage} />
+      </Switch>
     </div>
   );
 }
