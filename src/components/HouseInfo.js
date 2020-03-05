@@ -1,13 +1,13 @@
 import React from "react";
+import "./HouseInfo.css";
 
 export default function HouseInfo(props) {
   return (
-    <div style={{ border: "solid 1px", margin: "10px" }}>
-      <h2>{props.address}</h2> <br />
-      {props.priceEuro} <br />
-      {props.m2}
-      <br />
-      {props.bedRooms} <br />
+    <div className="Container">
+      <h2>{props.address}</h2>
+      <p>{props.priceEuro}</p>
+      <p>{props.m2}</p>
+      <p>{props.bedRooms}</p>
     </div>
   );
 }

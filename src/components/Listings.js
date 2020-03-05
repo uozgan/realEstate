@@ -59,8 +59,8 @@ export default function Listings() {
   const filteredListing = sortedListing
     ? sortedListing.filter(house => {
         if (
-          house.priceEuro < parseInt(maxPrice) &&
-          house.m2 > parseInt(floorSpace)
+          house.priceEuro <= parseInt(maxPrice) &&
+          house.m2 >= parseInt(floorSpace)
         ) {
           return true;
         }
