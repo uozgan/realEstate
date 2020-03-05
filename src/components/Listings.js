@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import HouseInfo from "./HouseInfo";
+import "./Listings.css";
 
 function compare_Price(house_a, house_b) {
   return house_b.priceEuro - house_a.priceEuro;
@@ -70,34 +71,39 @@ export default function Listings() {
   return !maxPrice || !listings ? (
     "Loading!"
   ) : (
-    <div>
-      <h1>Listings</h1>
-      <div>
-        <label>
-          {cheapest} Budget {mostExpensive} Current max: {maxPrice}
-        </label>
-        <br />
-        <input
-          type="range"
-          id="budget"
-          onChange={getMaxPrice}
-          min={cheapest}
-          max={mostExpensive}
-          defaultValue={mostExpensive}
-        />
-        <br />
-        <label>
-          {minM2} Floor Space {maxM2} Current choice: {floorSpace}
-        </label>
-        <br />
-        <input
-          type="range"
-          id="floorSpace"
-          onChange={getFloorSpace}
-          min={minM2}
-          max={maxM2}
-          defaultValue="0"
-        />
+    <div style={{ width: "100%" }}>
+      <h1 className="title">Listings</h1>
+      <div className="Slider-container">
+        <div className="Slider-container-text">
+          <p>Maximum Budget: {maxPrice}</p>
+          <p>Minimum Floor Space: {floorSpace}</p>
+        </div>
+        <div className="Slider-container-text">
+          <div>
+            €{cheapest}
+            <input
+              type="range"
+              id="budget"
+              onChange={getMaxPrice}
+              min={cheapest}
+              max={mostExpensive}
+              defaultValue={mostExpensive}
+            />
+            €{mostExpensive}
+          </div>
+          <div>
+            {minM2} m2
+            <input
+              type="range"
+              id="floorSpace"
+              onChange={getFloorSpace}
+              min={minM2}
+              max={maxM2}
+              defaultValue="0"
+            />
+            {maxM2} m2
+          </div>
+        </div>
       </div>
       <div>
         {filteredListing.map((house, index) => {

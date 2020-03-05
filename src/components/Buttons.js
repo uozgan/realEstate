@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Button.css";
 
 export default function Buttons() {
   const translation = {
@@ -24,13 +25,20 @@ export default function Buttons() {
   if (language === "English") {
     return (
       <div>
-        <div>
-          <button onClick={goToListings}>{translation.English[0]}</button>{" "}
-          <br />
-          <button onClick={goToScheduleView}>{translation.English[1]}</button>
+        <div className="Button">
+          <button className="btn" onClick={goToListings}>
+            {translation.English[0]}
+          </button>
+          <button className="btn" onClick={goToScheduleView}>
+            {translation.English[1]}
+          </button>
         </div>
-        <div>
-          <select onChange={chooseLanguage} defaultValue={language}>
+        <div className="Select">
+          <select
+            className="slct"
+            onChange={chooseLanguage}
+            defaultValue={language}
+          >
             <option value="English">English</option>
             <option value="Dutch">Nederlands</option>
           </select>
@@ -40,11 +48,11 @@ export default function Buttons() {
   } else {
     return (
       <div>
-        <div>
-          <button onClick={goToListings}>{translation.Dutch[0]}</button> <br />
+        <div className="Button">
+          <button onClick={goToListings}>{translation.Dutch[0]}</button>
           <button onClick={goToScheduleView}>{translation.Dutch[1]}</button>
         </div>
-        <div>
+        <div className="Select">
           <select onChange={chooseLanguage} defaultValue={language}>
             <option value="English">English</option>
             <option value="Dutch">Nederlands</option>

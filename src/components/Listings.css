@@ -1,0 +1,15 @@
+.Slider-container {
+  background-color: red;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.Slider-container-text {
+  display: flex;
+  justify-content: space-around;
+}
+
+.title {
+  text-align: center;
+}
