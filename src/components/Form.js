@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./Form.css";
 
 export default function Form() {
   const [name, set_name] = useState("");
@@ -53,7 +54,7 @@ export default function Form() {
       date,
       selectedHouse
     );
-    alert("Viewing successfully schedueled. Please note the date.");
+    alert(`Viewing successfully schedueled ${name}. Please note the date.`);
     set_name("");
     set_email("");
     set_phone("");
@@ -64,29 +65,35 @@ export default function Form() {
     "Loading!"
   ) : (
     <div>
-      <form style={{ marginTop: "20%" }}>
-        <label>Listing Addresses</label>
-        <select onChange={chooseListing}>
-          <option value={0}>Choose a Listing</option>
-          {listing.map((list, index) => {
-            const { address } = list;
-            const { street, number, city } = address;
-            return (
-              <option key={index} value={list.adrress}>
-                {street} {number}, {city}
-              </option>
-            );
-          })}
-        </select>
-        <br />
-        <label>Name:</label>
-        <input value={name} onChange={addName} /> <br />
-        <label>E-mail:</label>
-        <input value={email} onChange={addEmail} /> <br />
-        <label>Phone:</label>
-        <input value={phone} onChange={addPhone} /> <br />
-        <label>Date:</label>
-        <input type="date" onChange={chooseDate}></input> <br />
+      <form className="Form">
+        <div className="Form-container">
+          <div className="Labels">
+            <label>Listings:</label>
+            <label>Name:</label>
+            <label>E-mail:</label>
+            <label>Phone:</label>
+            <label>Date:</label>
+          </div>
+          <div className="Form-fill">
+            <select onChange={chooseListing}>
+              <option value={0}>Choose a Listing</option>
+              {listing.map((list, index) => {
+                const { address } = list;
+                const { street, number, city } = address;
+                return (
+                  <option key={index} value={list.adrress}>
+                    {street} {number}, {city}
+                  </option>
+                );
+              })}
+            </select>
+            <br />
+            <input value={name} onChange={addName} /> <br />
+            <input value={email} onChange={addEmail} /> <br />
+            <input value={phone} onChange={addPhone} /> <br />
+            <input type="date" onChange={chooseDate}></input>
+          </div>
+        </div>
         <button onClick={clicked}>Submit</button>
       </form>
     </div>

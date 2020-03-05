@@ -1,6 +1,11 @@
 .Container {
-  background-color: blue;
   display: flex;
   flex-direction: column;
   margin: 15px auto;
+  width: 600px;
+  border: solid;
+}
+
+.Container p {
+  text-align: center;
 }

@@ -26,8 +26,6 @@ export default function Listings() {
 
   const sortedListing = listings ? listings.sort(compare_Price).reverse() : [];
 
-  console.log("dışarısı:", sortedListing);
-
   const maxValue = sortedListing.map(house => {
     const { priceEuro } = house;
     console.log("Price Euro:", priceEuro);
@@ -37,8 +35,6 @@ export default function Listings() {
 
   const meter2 = sortedListing.map(house => {
     const { m2 } = house;
-    console.log("M2:", m2);
-
     return m2;
   });
 
@@ -75,12 +71,12 @@ export default function Listings() {
       <h1 className="title">Listings</h1>
       <div className="Slider-container">
         <div className="Slider-container-text">
-          <p>Maximum Budget: {maxPrice}</p>
-          <p>Minimum Floor Space: {floorSpace}</p>
+          <p>Maximum Budget: € {maxPrice}</p>
+          <p>Minimum Floor Space: {floorSpace} m2</p>
         </div>
         <div className="Slider-container-text">
           <div>
-            €{cheapest}
+            € {cheapest}
             <input
               type="range"
               id="budget"
@@ -89,7 +85,7 @@ export default function Listings() {
               max={mostExpensive}
               defaultValue={mostExpensive}
             />
-            €{mostExpensive}
+            € {mostExpensive}
           </div>
           <div>
             {minM2} m2

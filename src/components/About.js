@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Agents from "./Agents";
 import Buttons from "./Buttons";
+import "./About.css";
 
 export default function About() {
   const [agentList, set_agentList] = useState([]);
@@ -23,9 +24,9 @@ export default function About() {
   return !agentList ? (
     "Loading!"
   ) : (
-    <div>
+    <div className="About-container">
       <h1>About</h1>
-      <div>
+      <div className="About-agent">
         {agentList.map((agent, index) => {
           return (
             <Agents

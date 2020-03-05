@@ -26,19 +26,11 @@ export default function Buttons() {
     return (
       <div>
         <div className="Button">
-          <button className="btn" onClick={goToListings}>
-            {translation.English[0]}
-          </button>
-          <button className="btn" onClick={goToScheduleView}>
-            {translation.English[1]}
-          </button>
+          <button onClick={goToListings}>{translation.English[0]}</button>
+          <button onClick={goToScheduleView}>{translation.English[1]}</button>
         </div>
         <div className="Select">
-          <select
-            className="slct"
-            onChange={chooseLanguage}
-            defaultValue={language}
-          >
+          <select onChange={chooseLanguage} defaultValue={language}>
             <option value="English">English</option>
             <option value="Dutch">Nederlands</option>
           </select>

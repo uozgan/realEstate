@@ -8,8 +8,9 @@ import About from "./components/About";
 
 function App() {
   return (
-    <div>
+    <div className="Continer">
       <nav
+        className="NavBar"
         style={{
           textAlign: "center"
         }}

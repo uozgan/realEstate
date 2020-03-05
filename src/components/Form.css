@@ -1,0 +1,41 @@
+.Form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Form button {
+  height: 25px;
+  width: 120px;
+  margin: 20px auto;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.Form-fill select {
+  height: 35px;
+  width: 208px;
+}
+
+.Form-fill input {
+  height: 30px;
+  width: 200px;
+  font-size: 20px;
+}
+
+.Labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.Labels label {
+  height: 25px;
+  width: 100px;
+  font-size: 25px;
+  margin: auto;
+}
+
+.Form-container {
+  display: flex;
+  justify-content: center;
+}

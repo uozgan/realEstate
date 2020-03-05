@@ -1,23 +1,21 @@
 import React from "react";
+import "./Agents.css";
 
 export default function Agents(props) {
   return (
-    <div style={{ border: "solid 1px", margin: "10px" }}>
+    <div className="Agent-container">
       <h2>
         {props.firstName} {props.lastName}
-      </h2>{" "}
-      <br />
+      </h2>
       <img
         alt={props.firstName}
         src={props.imageUrl}
-        height="300px"
-        width="400px"
-      />{" "}
-      <br />
-      {props.motto} <br />
-      {props.languages}
-      <br />
-      {props.email} <br />
+        height="180px"
+        width="auto"
+      />
+      <p>{props.motto}</p>
+      <p>{props.languages}</p>
+      <p>{props.email}</p>
     </div>
   );
 }

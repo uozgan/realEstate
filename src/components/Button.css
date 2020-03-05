@@ -10,13 +10,13 @@
   padding: 20px 20px;
 }
 
-.btn {
+.Button button {
   margin-right: 20px;
   height: 40px;
   width: 120px;
 }
 
-.slct {
+.Select select {
   height: 30px;
   width: 100px;
 }
