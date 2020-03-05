@@ -8,7 +8,7 @@ export default function Form() {
   const [phone, set_phone] = useState("");
   const [date, set_date] = useState();
   const [listing, set_listing] = useState();
-  const [selectedHouse, set_selectedHouse] = useState(0);
+  const [selectedHouse, set_selectedHouse] = useState();
 
   useEffect(() => {
     const getListing = async () => {
@@ -55,10 +55,10 @@ export default function Form() {
       selectedHouse
     );
     alert(`Viewing successfully schedueled ${name}. Please note the date.`);
-    set_name("");
-    set_email("");
-    set_phone("");
-    set_selectedHouse(0);
+    // set_name("");
+    // set_email("");    This code refreshes the form after submitting
+    // set_phone("");
+    // set_selectedHouse("Unknown");
   };
 
   return !listing ? (
@@ -75,8 +75,8 @@ export default function Form() {
             <label>Date:</label>
           </div>
           <div className="Form-fill">
-            <select onChange={chooseListing}>
-              <option value={0}>Choose a Listing</option>
+            <select onChange={chooseListing} value={selectedHouse}>
+              <option value="Unknown">Choose a Listing</option>
               {listing.map((list, index) => {
                 const { address } = list;
                 const { street, number, city } = address;
