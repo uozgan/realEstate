@@ -8,7 +8,8 @@ function compare_Price(house_a, house_b) {
 
 export default function Listings() {
   const [listings, set_listings] = useState();
-  const [maxPrice, set_maxPrice] = useState();
+  const [maxPrice, set_maxPrice] = useState(886000);
+  const [floorSpace, set_floorSpace] = useState(44);
 
   useEffect(() => {
     const getListings = async () => {
@@ -22,38 +23,84 @@ export default function Listings() {
     getListings();
   }, []);
 
-  const sortedListing = listings ? listings.sort(compare_Price) : [];
+  const sortedListing = listings ? listings.sort(compare_Price).reverse() : [];
 
   console.log("dışarısı:", sortedListing);
 
-  return (
+  const maxValue = sortedListing.map(house => {
+    const { priceEuro } = house;
+    console.log("Price Euro:", priceEuro);
+
+    return priceEuro;
+  });
+
+  const meter2 = sortedListing.map(house => {
+    const { m2 } = house;
+    console.log("M2:", m2);
+
+    return m2;
+  });
+
+  const maxM2 = Math.max(...meter2);
+  const minM2 = Math.min(...meter2);
+
+  const mostExpensive = Math.max(...maxValue);
+  const cheapest = Math.min(...maxValue);
+
+  const getMaxPrice = e => {
+    set_maxPrice(e.target.value);
+  };
+
+  const getFloorSpace = e => {
+    set_floorSpace(e.target.value);
+  };
+
+  const filteredListing = sortedListing
+    ? sortedListing.filter(house => {
+        if (
+          house.priceEuro < parseInt(maxPrice) &&
+          house.m2 > parseInt(floorSpace)
+        ) {
+          return true;
+        }
+        return false;
+      })
+    : [];
+
+  return !maxPrice || !listings ? (
+    "Loading!"
+  ) : (
     <div>
       <h1>Listings</h1>
       <div>
-        <label>Budget</label>
+        <label>
+          {cheapest} Budget {mostExpensive} Current max: {maxPrice}
+        </label>
         <br />
         <input
           type="range"
-          id="volume"
-          name="volume"
-          min="0"
-          max="110000"
-          defaultValue="60000"
+          id="budget"
+          onChange={getMaxPrice}
+          min={cheapest}
+          max={mostExpensive}
+          defaultValue={mostExpensive}
         />
         <br />
-        <label>Floor Space</label>
+        <label>
+          {minM2} Floor Space {maxM2} Current choice: {floorSpace}
+        </label>
         <br />
         <input
           type="range"
-          id="m2"
-          name="m2"
-          min="0"
-          max="300"
-          defaultValue="50"
+          id="floorSpace"
+          onChange={getFloorSpace}
+          min={minM2}
+          max={maxM2}
+          defaultValue="0"
         />
       </div>
       <div>
-        {sortedListing.map((house, index) => {
+        {filteredListing.map((house, index) => {
           return (
             <HouseInfo
               key={house.id}
